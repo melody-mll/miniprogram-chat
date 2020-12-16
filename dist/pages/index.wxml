@@ -1,0 +1,4 @@
+
+  <view class="container">
+  i am mll my name is {{name}} {{age}} 
+  </view>
