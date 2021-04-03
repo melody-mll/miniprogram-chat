@@ -1,0 +1,50 @@
+<!--pages/diseasedetails/index.wxml-->
+<!-- <text>pages/diseasedetails/index.wxml</text> -->
+<!--pages/registerdetail/index.wxml-->
+<view class="main">
+  <view class="maintitle">就诊详细信息</view>
+  <view class="item top">
+    <view class="title">患者姓名</view>
+    <view class="text">{{patientname}}</view>
+  </view>
+  <view class="item">
+    <view class="title">患者性别</view>
+    <view class="text">{{patientsex}}</view>
+  </view>
+  <view class="item">
+    <view class="title">患者年龄</view>
+    <view class="text">{{patientage}}</view>
+  </view>
+  <view class="item">
+    <view class="title">患者电话</view>
+    <view class="text">{{patientphone}}</view>
+  </view>
+  <view class="item">
+    <view class="title">患者身份证号</view>
+    <view class="text">{{patientid}}</view>
+  </view>
+  <view class="item">
+    <view class="title">疾病名称</view>
+    <view class="text">{{diseasename}}</view>
+  </view>
+  <view class="itemdetail">
+    <view class="title">疾病详情</view>
+    <view class="text">{{diseasedetail}}</view>
+  </view>
+  <view class="item">
+    <view class="title">就诊日期</view>
+    <view class="text date">{{clinicdate}}</view>
+  </view>
+
+  <view>
+    <view open-type="getUserInfo" class="chat-entry-wrap"  bindtap="subscribeMessageEvent">
+      <view>留言</view>
+      <view>咨询</view>
+    </view>
+    <!-- <button bindtap="$chatEntry$subscribeMessageEvent" open-type="getUserInfo" class="chat-entry-wrap}}" style="{{$chatEntry$horizontal}}:{{$chatEntry$btnXY[0]}}rpx; {{$chatEntry$vertical}}:{{$chatEntry$btnXY[1]}}rpx; z-index:13;" bindgetuserinfo="$chatEntry$getUserInfoEvent"  wx:else>
+      <view>留言</view>
+      <view>咨询</view>
+    </button> -->
+  </view>
+</view>
+

@@ -1,1 +1,59 @@
-{"pages":["pages/index"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"WeChat","navigationBarTextStyle":"black"}}
+{
+  "pages": 
+  [  
+    "pages/main/index",
+    "pages/chats/index",
+    "pages/demo/index",
+    "pages/user/index",
+    "pages/userinfo/index",
+    "pages/changedepart/index",
+    "pages/changeproject/index",
+    "pages/changedoctor/index",
+    "pages/changedate/index",
+    "pages/registerinformation/index",
+    "pages/infosubmit/index",
+    "pages/bindphone/index",
+    "pages/doctordetail/index",
+    "pages/ariticledetail/index",
+    "pages/registershowing/index",
+    "pages/registerdetail/index",
+    "pages/binddisease/index",
+    "pages/diseasedetails/index",
+    "pages/consultingrecord/index",
+    "pages/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "医患在线沟通平台",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh":true
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/main/index",
+      "text": "首页",
+      "iconPath": "icon/home.png",
+      "selectedIconPath": "icon/homeselect.png"
+    },
+    {
+      "pagePath": "pages/chats/index",
+      "text": "聊天",
+      "iconPath": "icon/chat.png",
+      "selectedIconPath": "icon/chatselect.png"
+    },
+    {
+      "pagePath": "pages/userinfo/index",
+      "text": "个人中心",
+      "iconPath": "icon/user.png",
+      "selectedIconPath": "icon/userselect.png"
+    }]
+    
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+  },
+  "sitemapLocation": "sitemap86.json"
+}

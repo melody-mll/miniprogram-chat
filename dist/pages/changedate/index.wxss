@@ -1,0 +1,112 @@
+/* pages/changedate/index.wxss */
+.wrap > .item {
+  display: flex;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  background: white;
+  height: 160rpx;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+.wrap > .item .left-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+.wrap > .item .right {
+  margin-left: 180rpx;
+}
+.wrap > .item .right .title {
+  display: inline-block;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 16rpx;
+  line-height: 132rpx;
+}
+.wrap .split {
+  height: 20rpx;
+  background: #f2f2f2;
+}
+.wrap .schedule-wrap {
+  padding: 32rpx;
+  box-sizing: border-box;
+  background: white;
+}
+.wrap .schedule-wrap .title {
+  height: 130rpx;
+  line-height: 130rpx;
+}
+.wrap .schedule-wrap .item {
+  padding: 10rpx 20rpx;
+  height: 100rpx;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+.wrap .schedule-wrap .item:last-child {
+  margin-top: 30rpx;
+  border: none;
+}
+.fx-justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+.wrap .schedule-wrap .item .top {
+  display:flex;
+  height: 96rpx;
+}
+.wrap .schedule-wrap .item .top .left {
+  display:inline-block;
+  font-size: 32rpx;
+  color: #333333;
+}
+.wrap .schedule-wrap .item .top .right {
+  display:flex;
+  width: 180rpx;
+}
+.wrap .schedule-wrap .item .top .right .price {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #d0021b;
+}
+.wrap .schedule-wrap .item .top .right .tag {
+  width: 96rpx;
+  height: 48rpx;
+  background: #31d4da;
+  border-radius: 4rpx;
+  font-size: 24rpx;
+  color: #f2ffff;
+  line-height: 48rpx;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.wrap .schedule-wrap .item .top .right .tag.disabled {
+  background: #9d9d9d;
+}
+.wrap .schedule-wrap .item .bottom {
+  font-size: 28rpx;
+  color: #9d9d9d;
+}
+.bs-emptyPage-container{
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bs-emptyPage-container .imgs {
+  width: 240rpx;
+  height: 240rpx;
+  margin-top: 160rpx;
+}
+.bs-emptyPage-container .imgs image {
+  width: 240rpx;
+  height: 240rpx;
+}
+.bs-emptyPage-container .description {
+  color: #5d5d5d;
+  font-size: 28rpx;
+  margin-top: 48rpx;
+}
+.wrap > .item .right .select{
+  display: none;
+}

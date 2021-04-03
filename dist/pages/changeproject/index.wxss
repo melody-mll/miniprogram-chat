@@ -1,0 +1,37 @@
+/* pages/changeproject/index.wxss */
+/* pages/changedepart/index.wxss */
+page {
+  background: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 68rpx;
+}
+.select-project .item {
+  width: 686rpx;
+  margin: 0 auto;
+  margin-top: 32rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0rpx 0rpx 32rpx 0rpx rgba(0, 0, 0, 0.1);
+  border-radius: 16rpx;
+}
+.select-project .item .title {
+  float: right;
+  margin-right: 200rpx;
+  line-height: 118rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333333;
+  max-width: 400rpx;
+  margin-top: -118rpx;
+}
+.left-img image{
+  width: 124rpx;
+  height: 110rpx;
+  display: inline-block;
+  background: #eafaf7;
+  border-radius: 4rpx;
+}

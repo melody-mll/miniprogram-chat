@@ -1,0 +1,45 @@
+<!--pages/user/index.wxml-->
+<view class="main">
+  <!-- <view class='headView'>
+   <open-data class='icon' mode="aspectFit" type="userAvatarUrl"></open-data>
+    <view class='icon' />
+</view> -->
+    <view class="avatar-warp">
+      <view class="avatar">
+        <open-data type="userAvatarUrl" class="_avatar"></open-data>
+        <view class="_avatar" />
+      </view>
+      <view class="nickdetail">
+        <open-data type="userNickName" class="nickname"/>
+      </view>
+
+    </view>
+    <view class="getphone topmargin" bindtap="bindphone">
+      <view class="leftinfo">
+        <image src="../../images/iconphone.png"></image>
+        <view class="gettips">绑定手机号</view>
+        </view>
+      <view class="rightinfo">
+        <image src="../../images/iconarrow.png" class="{{phonedata?'selected':''}}"></image>
+        <view class="{{phonedata?'':'selected'}}">{{userphone}}</view>
+      </view>
+    </view>
+    <view class="getphone" bindtap="bindregister">
+      <view class="leftinfo">
+        <image src="../../images/userregister.png"></image>
+        <view class="gettips">预约信息</view>
+        </view>
+      <view class="rightinfo">
+        <image src="../../images/iconarrow.png"></image>
+      </view>
+    </view>
+    <view class="getphone">
+      <view class="leftinfo">
+        <image src="../../images/iconphone.png"></image>
+        <view class="gettips">详细信息</view>
+      </view>
+      <view class="rightinfo">
+        <image src="../../images/iconarrow.png"></image>
+      </view>
+    </view>
+</view>

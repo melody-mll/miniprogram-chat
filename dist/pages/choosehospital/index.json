@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText":"附近医院",
+  "navigationBarBackgroundColor": "#87CEEB",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "l-loadmore": "../../components/loadmore/index",
+    "v-loading": "../../components/loading/index",
+    "v-school": "../../components/hospitalitem/index"
+  }
+}

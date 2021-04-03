@@ -1,0 +1,43 @@
+<view class="index">
+    <SearchInput></SearchInput>
+    <swiper autoplay circular interval="3000" indicator-dots>
+      <!-- <swiper-item> <image mode="widthFix" src="https://aecpm.alicdn.com/simba/img/TB1JNHwKFXXXXafXVXXSutbFXXX.jpg"/></swiper-item> -->
+      <swiper-item> <image mode="heightFix" src="../../images/lunbo1.jpg"/></swiper-item>
+      <swiper-item><image mode="heightFix" src="../../images/lunbo2.jpg"/></swiper-item>
+      <swiper-item><image mode="heightFix" src="../../images/lunbo3.jpg"/></swiper-item>
+    </swiper>
+    <view class="index_cate">
+    <navigator
+    wx:for="{{catesList}}"
+    wx:key="index"
+    data-wpynextstep-a="{{item}}" 
+    url="{{item.url}}"
+    style="text-align:center"
+    > 
+    <image mode="widthFix" src="{{item.image_src}}" ></image>
+    <text>{{item.name}}</text>
+    </navigator>
+    </view>
+
+    <view class="babySchool-container">
+    <view class="warp">
+      <text class="title">今日推荐</text>
+    </view>
+
+    <block wx:for="{{articleList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+      
+  <view class="articleCard-container" style='background-image: url({{item.articleCoverImg}});background-size: 300px 200px;'  >
+    <view class="article-navigator" bindtap="onAriticleDetail" data-com-index="{{index}}" data-wpyonariticledetail-a="{{item.articleId}}">
+      <view class="inner-warp">
+        <!-- <image class="left" src="{{item.articleCoverImg}}"/> -->
+        <view class="right">
+          <text class="title">{{item.articleTitle}}</text>
+          <text class="texttype">{{item.articleText}}</text>    
+        </view>
+      </view>
+    </view>
+  </view>
+
+    </block>
+  </view>
+  </view>

@@ -1,0 +1,19 @@
+<view class='player-container'>
+  <image src='{{picture}}'></image>
+</view>
+<view>
+  <view class="maininfo">
+    医院名称：{{name}}
+  </view>
+  <view class="maininfo">
+    医院地址：{{address}}
+  </view>
+  <view class="maininfo">
+    医院等级：{{level}}
+  </view>
+  <view class="maininfo imgs">
+    医院星级：
+    <image  src='{{url}}'></image>
+  </view>
+
+</view>

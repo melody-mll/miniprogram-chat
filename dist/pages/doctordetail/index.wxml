@@ -1,0 +1,9 @@
+<!--pages/doctordetail/index.wxml-->
+<view class="select-project">
+    <navigator class="item" bindtap="nextStep"  wx:for="{{list}}" wx:key="index" data-wpynextstep-a="{{item}}" url="{{url}}">
+      <image src="../../images/docdetail.png"></image>
+      <view class="title">{{item.doctorname}}</view>
+      <view class="depart">所在科室：{{item.doctordepart}}</view>
+
+    </navigator>
+</view>   

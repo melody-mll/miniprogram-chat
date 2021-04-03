@@ -1,0 +1,9 @@
+<!--pages/infosubmit/index.wxml-->
+<view class="main">
+<view class="imgs">
+  <image src="../../images/submitsuccess.png"></image>
+</view>
+<view class="fontsubmit">提交成功</view>
+<view class="fontsubmitsee">(可从 主页->我的->我的预约 进行查看)</view>
+<button class="submit-btn" bindtap="tapNextBtn">返回主页</button>
+</view>

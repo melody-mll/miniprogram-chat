@@ -1,0 +1,8 @@
+<!--pages/demo/index.wxml-->
+<!-- <text>pages/demo/index.wxml</text> -->
+<Tabs list="{{list}}" binditemchange="handleitemchange">
+  <block wx:if="{{list[0].inActive}}">0</block>
+  <block wx:elif="{{list[1].inActive}}">1</block>
+  <block wx:elif="{{list[2].inActive}}">2</block>
+  <block wx:elif="{{list[3].inActive}}">3</block>
+</Tabs>

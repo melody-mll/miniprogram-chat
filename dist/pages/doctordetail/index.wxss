@@ -1,0 +1,39 @@
+/* pages/doctordetail/index.wxss */
+/* pages/changedepart/index.wxss */
+page {
+  background: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 68rpx;
+}
+.select-project .item {
+  display:flex;
+  width: 686rpx;
+  margin: 0 auto;
+  margin-top: 32rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0rpx 0rpx 32rpx 0rpx rgba(0, 0, 0, 0.1);
+  border-radius: 16rpx;
+}
+.select-project .item .title {
+  margin-top: 16rpx;
+  font-size: 50rpx;
+  font-weight: 700;
+  color: #333333;
+  max-width: 400rpx;
+  margin-bottom: 32rpx;
+}
+.select-project .item .depart{
+  margin-top: 22rpx;
+  margin-left: 50rpx;
+  font-size: 40rpx;
+}
+.select-project .item  image{
+  margin-right: 30rpx;
+  width: 100rpx;
+  height: 100rpx;
+}

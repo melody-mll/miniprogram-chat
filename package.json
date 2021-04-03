@@ -11,6 +11,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "websocket-heartbeat-miniprogram": "^1.0.1",
     "wepy": "^1.7.2",
     "wepy-async-function": "^1.4.7",
     "wepy-com-toast": "^1.0.2",

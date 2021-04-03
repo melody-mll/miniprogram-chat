@@ -1,0 +1,526 @@
+<template>
+  <view class="page-wrap">
+    <scroll-view
+      scroll-y
+      scroll-with-animation
+      bindscrolltolower="loadmoreEvent"
+      class="message-container"
+    >
+      <view
+        class="date-group-wrap"
+        wx:for="{{messageList}}"
+        wx:key="index"
+      >
+        <view class="date">{{item.miniMsgs[0].createDate}}</view>
+        <view class="chat-content">
+          <block
+            wx:for="{{item.miniMsgs}}"
+            wx:key="index"
+          >
+            <view class="message-wrap {{item.isSelf ? 'self' : ''}}">
+              <image
+                src="{{item.isSelf === 1 ? item.headImg : 'https://biosan-saas.oss-cn-beijing.aliyuncs.com/weichat/chat/chat-avatar.png'}}"
+                class="avatar"
+              />
+              <view
+                class="message"
+                wx:if="{{item.contentType=== 1}}"
+              >
+                {{item.content}}
+              </view>
+              <image
+                wx:elif="{{item.contentType=== 2}}"
+                mode="widthFix"
+                src="{{item.content}}"
+                class="message-img"
+              />
+            </view>
+            <view
+              class="success-tips-wrap"
+              wx:if="{{item.isFirst}}"
+            >
+              <view class="success-tips">
+                <view>留言成功！</view>
+                <view>
+                  医生查看之后将尽快回复您！
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="page-fix-bottom ">
+      <textarea
+        value="{{messageVal}}"
+        fixed
+        maxlength="500"
+        cursor-spacing="20"
+        disable-default-padding="{{false}}"
+        bindinput="inputEvent"
+        bindconfirm="messageSubmitEvent"
+      />
+      <!-- <view
+        class="iconfont icon-chat-upload"
+        @tap="chooseImgEvent"
+      ></view> -->
+      <view
+        class="submit-btn {{messageVal !== '' ? 'send' : ''}}"
+        @tap="messageSubmitEvent"
+      >发送</view>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy';
+//import { chatVersion, wsDomain } from 'config/globalConfig';
+//import uploadFile from 'shared/uploadFile';
+import WebsocketHeartbeat from 'websocket-heartbeat-miniprogram';
+import {requests} from '@/requests/index';
+//import debounce from 'utils/debounce';
+let loadLastTime;
+export default class extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的咨询'
+  };
+
+//   loadMoreDebounce = debounce(
+//     () => {
+//       this.loadData(false);
+//     },
+//     500,
+//     true
+//   );
+
+  pageNum = 0;
+  socketTask = null;
+  data = {
+    isConnectSocket: false,
+    isIpx: false,
+    messageVal: '',
+    messageList: []
+  };
+
+  methods = {
+    inputEvent({ detail }) {
+      //this.getchatrecordList();
+      const { value } = detail;
+      this.messageVal = value.trim() ? value : '';
+      //this.$apply();
+    },
+    // previewImgageEevent(url) {
+    //   wepy.previewImage({
+    //     current: url,
+    //     urls: [url]
+    //   });
+    // },
+    // loadmoreEvent(e) {
+    //   //this.loadMoreDebounce();
+    // },
+    // 选中图片进行上传
+    // chooseImgEvent() {
+    //   wepy
+    //     .chooseImage({
+    //       count: 1 // 最多可以选择的图片张数
+    //     })
+    //     .then(result => {
+    //       const { errMsg, tempFilePaths } = result;
+    //       if (errMsg === 'chooseImage:ok') {
+    //         wepy.showNavigationBarLoading();
+    //         Promise.all(
+    //           //tempFilePaths.map((url, index) => uploadFile(url, 'file'))
+    //         )
+    //           .then(result => {
+    //             wepy.hideNavigationBarLoading();
+    //             this.sendMessage(result.join(','), 2).catch(err => {
+    //               if (typeof err === 'string') {
+    //                 wepy.showToast({
+    //                   title: err, // 提示的内容,
+    //                   icon: 'none', // 图标,
+    //                   duration: 1000 // 延迟时间,
+    //                 });
+    //               }
+    //             });
+    //           })
+    //           .catch(err => {
+    //             wepy.hideNavigationBarLoading();
+    //             if (typeof err === 'string') {
+    //               wepy.showToast({
+    //                 title: err, // 提示的内容,
+    //                 icon: 'none', // 图标,
+    //                 duration: 1000 // 延迟时间,
+    //               });
+    //             }
+    //             console.log(err);
+    //           });
+    //       }
+    //     });
+    // },
+    messageSubmitEvent() {
+      if (this.messageVal !== '') {
+        this.sendMessage(this.messageVal, 1)
+          .then(res => {
+            this.messageVal = '';
+            //this.$apply();
+          })
+          .catch(err => {
+            wepy.showToast({
+              title: err, // 提示的内容,
+              icon: 'none', // 图标,
+              duration: 1000 // 延迟时间,
+            });
+          });
+      }
+    }
+  };
+
+  showLoading(init) {
+    if (init) {
+      wepy.showNavigationBarLoading();
+    }
+  }
+
+  hideLoading(init) {
+    if (init) {
+      wepy.hideNavigationBarLoading();
+    } else {
+      wepy.stopPullDownRefresh();
+    }
+  }
+
+  // 下拉消息合并
+  // mergeMessage(newData = []) {
+  //   const messageList = this.messageList;
+  //   if (messageList.length) {
+  //     const oldLastDateContent = messageList[messageList.length - 1];
+  //     const newFisrstDateContent = newData[0];
+  //     // 如果下拉的数据第一个date与现有的数据最后一个date相同，则要把相同的这两个miniMsgs进行合并
+  //     if (oldLastDateContent.date === newFisrstDateContent.date) {
+  //       oldLastDateContent.miniMsgs = newFisrstDateContent.miniMsgs.concat(
+  //         oldLastDateContent.miniMsgs
+  //       );
+  //       newData.splice(0, 1);
+  //     }
+  //     return messageList.concat(newData);
+  //   } else {
+  //     return newData;
+  //   }
+  // }
+
+  sendMessage(content, contentType) {
+    return new Promise((resolve, reject) => {
+      if (this.isConnectSocket) {
+        try {
+          this.socketTask.send({
+            data: JSON.stringify({
+              relationId: this.relationId,
+              sysType: 1,
+              sendUserType: 1,
+              content,
+              contentType
+            })
+          });
+          resolve();
+        } catch (err) {
+          reject(err);
+        }
+      } else {
+        // eslint-disable-next-line prefer-promise-reject-errors
+        reject('网络异常，请检查网络后重新进入！');
+      }
+    });
+  }
+
+  // 创建webSocket任务
+  createWebSocketTask() {
+    // const ws = new WebSocket('ws://localhost:3003/websocketcollection');
+    // ws.onopen = function () {
+    //         console.log('WebSocket已连接');
+    //         // 使用连接发送数据
+    //         ws.send('Hello!');
+    //     };
+
+    //     // 客户端接收服务端数据时触发
+    //     ws.onmessage = function (msg) {
+    //         console.log('来自服务器端数据:', msg.data); // MessageEvent {isTrusted: true, data: "欢迎光临" ...}
+    //         alert(msg.data);
+    //         // 关闭连接
+    //         // ws.close();
+    //     };
+
+    //     // 通信发生错误时触发
+    //     ws.onerror = function (e) {
+    //         console.log(e);
+    //     };
+
+    //     // 连接关闭时触发
+    //     ws.onclose = function () {
+    //         console.log('WebSocket已关闭');
+    //     }
+    console.log('createWebSocketTask');
+    WebsocketHeartbeat({
+      miniprogram: wx,
+      pingMsg: 'ping',
+      connectSocketParams: {
+        url: 'http://localhost:3003/websocketcollection',
+        header: {
+          'content-type': 'application/json',
+          //Authorization: this.$db.get('token')
+        }
+      }
+    }).then(task => {
+      this.socketTask = task;
+      console.log(task, 'task');
+
+      task.onOpen = () => {
+        // 钩子函数
+        console.log('open');
+        this.isConnectSocket = true;
+        this.$apply();
+      };
+      task.onClose = () => {
+        // 钩子函数
+        console.log('close');
+        this.isConnectSocket = false;
+        this.$apply();
+      };
+      task.onError = e => {
+        // 钩子函数
+        console.log('onError：', e);
+      };
+      task.onMessage = ({ data }) => {
+        // 钩子函数
+        console.log('onMessage', data);
+        if (data !== 'pong') {
+          const result = JSON.parse(data);
+          const date = result.createDate.slice(0, 10);
+          const findItem = this.messageList.find(item => item.date === date);
+          if (findItem) {
+            findItem.miniMsgs.push(result);
+          } else {
+            this.messageList.unshift({
+              date,
+              miniMsgs: [result]
+            });
+          }
+          this.$apply();
+        }
+      };
+    });
+  }
+
+  reverseData(data) {
+    if (Array.isArray(data) && data.length) {
+      data = data.reverse();
+    }
+    return data;
+  }
+
+  // loadData(init = false) {
+  //   let lastTime = Date.now();
+  //   if (!init && this.messageList.length) {
+  //     const latestMessageList = this.messageList[this.messageList.length - 1]
+  //       .miniMsgs;
+  //     lastTime = new Date(
+  //       latestMessageList[0].createDate.replace(/-/g, '/')
+  //     ).getTime();
+  //   }
+  //   if (loadLastTime !== lastTime) {
+  //     loadLastTime = lastTime;
+  //     // 获取消息列表中的最后一条消息
+  //     const params = {
+  //       relationId: this.relationId,
+  //       lastTime,
+  //       isFirst: Number(init)
+  //     };
+  //     this.showLoading(init);
+  //     this.dispatchRequest(`/${chatVersion}/treat/getChatRecord`, params, 'GET')
+  //       .then(response => {
+  //         this.hideLoading(init);
+  //         let { data, code } = response;
+  //         if (code === 10000 && data.length) {
+  //           data = this.reverseData(data);
+  //           this.messageList = this.mergeMessage(data);
+  //           if (init) {
+  //             this.createWebSocketTask();
+  //           }
+
+  //           this.$apply();
+  //         }
+  //       })
+  //       .catch(err => {
+  //         this.hideLoading(init);
+  //         wepy.showToast({
+  //           title: `${err.statusCode}`, // 提示的内容,
+  //           icon: 'none', // 图标,
+  //           duration: 1500 // 延迟时间,
+  //         });
+  //       });
+  //   }
+  // }
+
+  onLoad() {
+    const { relationId } = this.$wxpage.options;
+    //this.isIpx = this.$db.get('isIpx');
+    this.relationId = relationId;
+    this.getchatrecordList();
+    this.createWebSocketTask();
+    //this.loadData(true);
+  }
+
+  getchatrecordList(){
+    requests({
+      url:"http://localhost:3003/getchatrecordlist"
+    }).then(result =>{
+      this.messageList = result.data.data
+      this.setData({
+        messageList:result.data.data
+      })
+    })
+  }
+
+  onUnload() {
+    this.socketTask && this.socketTask.close();
+  }
+}
+</script>
+
+<style lang="less">
+page {
+  background-color: #f5f5f5;
+  height: 100%;
+}
+.page-wrap {
+  box-sizing: border-box;
+  height: 100%;
+}
+.date-group-wrap {
+  color: #9d9d9d;
+  font-size: 24rpx;
+  text-align: center;
+  transform: rotate(180deg);
+  .date {
+    color: #9d9d9d;
+    padding: 32rpx 0;
+    font-size: 24rpx;
+  }
+}
+.message-container {
+  width: 100%;
+  height: calc(~'100% - 120rpx');
+  transform: rotate(180deg);
+}
+.chat-content {
+  .message-wrap {
+    display: flex;
+    align-items: flex-start;
+    padding: 0 32rpx;
+    margin-bottom: 32rpx;
+    &.self {
+      flex-direction: row-reverse;
+      .avatar {
+        margin: 0 0 0 28rpx;
+      }
+      .message {
+        background: rgba(49, 212, 218, 1);
+        color: #ffffff;
+        &::after {
+          left: initial;
+          right: -30rpx;
+          border-color: transparent transparent transparent #31d4da;
+        }
+      }
+    }
+    .message {
+      position: relative;
+      max-width: 508rpx;
+      padding: 20rpx 32rpx;
+      background-color: #fff;
+      text-align: left;
+      font-size: 28rpx;
+      color: #333333;
+      border-radius: 16rpx;
+      word-wrap: break-word;
+      &::after {
+        content: '';
+        position: absolute;
+        left: -30rpx;
+        top: 24rpx;
+        width: 0;
+        height: 0;
+        border-width: 18rpx;
+        border-style: solid;
+        border-color: transparent #fff transparent transparent;
+      }
+    }
+    .message-img {
+      width: 320rpx;
+      height: 240rpx;
+      border-radius: 16rpx;
+    }
+    .avatar {
+      width: 80rpx;
+      height: 80rpx;
+      border-radius: 50%;
+      margin: 0 28rpx 0 0;
+    }
+  }
+}
+.page-fix-bottom {
+  box-sizing: border-box;
+  background-color: #f6f6f6;
+  padding: 16rpx;
+  display: flex;
+  &.ipx {
+    bottom: 68rpx;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -68rpx;
+      right: 0;
+      height: 68rpx;
+      background: #f6f6f6;
+    }
+  }
+  > textarea {
+    box-sizing: border-box;
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8rpx;
+    height: 80rpx;
+    padding: 24rpx;
+  }
+  .icon-chat-upload {
+    font-size: 70rpx;
+    margin: 0 16rpx;
+  }
+  .submit-btn {
+    width: 120rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    background: rgba(204, 204, 204, 1);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 32rpx;
+    &.send {
+      background-color: #31d4da;
+    }
+  }
+}
+.success-tips-wrap {
+  text-align: center;
+  .success-tips {
+    display: inline-block;
+    color: #ffff;
+    font-size: 28rpx;
+    border-radius: 16rpx;
+    background: #ccc;
+    margin: 0 auto 32rpx;
+    padding: 14rpx 40rpx;
+    line-height: 1.7;
+  }
+}
+</style>
+

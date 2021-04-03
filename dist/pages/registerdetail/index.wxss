@@ -1,0 +1,25 @@
+/* pages/registerdetail/index.wxss */
+.maintitle{
+  text-align: center;
+  margin-top: 20rpx;
+  font-size: 45rpx;
+}
+.main .item{
+  display: flex;
+  border-bottom: 3rpx solid #a59f9f;
+  height: 120rpx;
+  /* border-bottom: 3rpx solid #5d5d5d; */
+  padding: 30rpx 30rpx;
+  font-size: 42rpx;
+  justify-content: space-between;
+}
+.main .top{
+  margin-top: 74rpx;
+}
+.item .text{
+  font-size: 36rpx;
+  color: #675f5f;
+}
+.item .date{
+  color: red;
+}

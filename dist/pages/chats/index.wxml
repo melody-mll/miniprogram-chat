@@ -1,0 +1,58 @@
+<!--pages/chats/index.wxml-->
+<!-- <text>pages/chats/index.wxml</text> -->
+<view class="bindphone '{{phonedata?'selected':''}}'">
+  需绑定电话信息来查询或绑定病历
+</view>
+<view class="bindphone '{{phonedata?'selected':''}}'">
+  请前往绑定！！
+</view>
+<view class="page-wrap '{{phonedata?'':'selected'}}'">
+    <block  wx:if="{{recordList.length}}">
+      <view class="page-container">
+        <view class="card-list-wrap">
+          <block wx:for="{{recordList}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+            <view class="card-item" bindtap="informationdetailEvent" data-wpynavigateevent-a="{{item}}">
+              
+    <view class="component-card-wrap">
+        <view class="card-body">
+            <view class="top-row">
+                <!-- <image src="https://biosan-saas.oss-cn-beijing.aliyuncs.com/weichat/card-avatar.png" class="avatar"/> -->
+                <image src="../../images/个人资料.png" class="avatar"></image>
+                <view class="middle-info">
+                    <text class="nickname">{{item.patientname}}</text>
+                    <text class="tel">（{{item.patientphone}})</text>
+                </view>
+                <view class="iconfont icon-icon_Arrow"/>
+            </view>
+            <view class="detail-row">
+              <view class="item">
+                <view class="title">性别</view>
+                <view class="content">{{item.patientsex}}</view>
+              </view>
+              <view class="item">
+                <view class="title">就诊日期</view>
+                <view class="content">{{item.clinicdate}}</view>
+              </view>
+              <view class="item">
+                <view class="title">就诊状况</view>
+                <view class="content name">{{item.diseasedetail}}</view>
+              </view>
+            </view>
+        </view>
+        <!-- <view class="card-footer"> 
+            病历创建时间：{{item.createTime}}
+        </view> -->
+    </view>
+
+            </view>
+          </block>
+        </view>
+        <view class="page-button" bindtap="scanQRcodEvent">添加病历</view>
+      </view>
+    </block>
+    <block  wx:else>
+      <view class="empty-wrap">
+        <view class="page-button" bindtap="scanQRcodEvent">添加病历</view>
+      </view>
+    </block>
+</view>

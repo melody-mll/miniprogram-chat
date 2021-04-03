@@ -1,0 +1,57 @@
+/* pages/diseasedetails/index.wxss */
+/* pages/registerdetail/index.wxss */
+.maintitle{
+  text-align: center;
+  margin-top: 20rpx;
+  font-size: 45rpx;
+}
+.main .item{
+  display: flex;
+  border-bottom: 3rpx solid #a59f9f;
+  height: 70rpx;
+  /* border-bottom: 3rpx solid #5d5d5d; */
+  padding: 30rpx 30rpx;
+  font-size: 42rpx;
+  justify-content: space-between;
+}
+.main .itemdetail{
+  border-bottom: 3rpx solid #a59f9f;
+  height: 300rpx;
+  /* border-bottom: 3rpx solid #5d5d5d; */
+  padding: 30rpx 30rpx;
+  font-size: 42rpx;
+  justify-content: space-between;
+}
+.main .top{
+  margin-top: 74rpx;
+}
+.item .text{
+  font-size: 36rpx;
+  color: #675f5f;
+}
+.itemdetail .text{
+  font-size: 36rpx;
+  color: #675f5f;
+  margin-top: 20rpx;
+}
+.item .date{
+  color: red;
+}
+.chat-entry-wrap {
+  left: 550rpx;
+  top: 900rpx;
+  text-align: center;
+  position: fixed;
+  width: 110rpx;
+  height: 110rpx;
+  display: inline-flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0rpx 4rpx 16rpx 0rpx rgba(204, 204, 204, 0.6);
+  background-color: #87CEEB;
+  /* background: linear-gradient(180deg, #31d4da 0%, rgba(49, 212, 218, 0.8) 100%); */
+  font-size: 24rpx;
+  color: #fff;
+}

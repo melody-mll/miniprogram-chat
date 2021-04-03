@@ -1,0 +1,71 @@
+/* pages/bindpatientdisease/index.wxss */
+.maintitle{
+  font-size: 50rpx;
+  text-align: center;
+  margin-top: 100rpx;
+  margin-bottom: 80rpx;
+}
+.inputs {
+  background: #fff;
+  padding: 0rpx 32rpx 0rpx 32rpx;
+}
+.inputs .input-group:last-child {
+  border: none;
+  margin-bottom: 20rpx;
+}
+.inputs .input-group:last-child {
+  border: none;
+  margin-bottom: 20rpx;
+}
+.input-group {
+  width: 100%;
+  display: flex;
+  position: relative;
+  line-height: 120rpx;
+  justify-content: space-between;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+.input-group .input-label {
+  float: left;
+  display: block;
+  font-size: 36rpx;
+  color: #5d5d5d;
+  line-height: 120rpx;
+}
+.input-group input {
+  flex: 1;
+  height: 120rpx;
+  font-size: 32rpx;
+  color: #5d5d5d;
+  text-align: right;
+  line-height: 120rpx;
+  padding-right: 48rpx;
+}
+.input-group picker {
+  flex: 1;
+  height: 120rpx;
+  font-size: 32rpx;
+  color: #5d5d5d;
+  text-align: right;
+  line-height: 120rpx;
+  padding-right: 48rpx;
+}
+.input-group .input-label {
+  float: left;
+  display: block;
+  font-size: 36rpx;
+  color: #5d5d5d;
+  line-height: 120rpx;
+}
+.submit-btn {
+  width: 560rpx;
+  height: 96rpx;
+  margin: 0 auto;
+  font-size: 32rpx;
+  margin-top: 100rpx;
+  line-height: 96rpx;
+  border-radius: 48rpx;
+  text-align: center;
+  color: #ffffff;
+  background: #87CEEB;
+}

@@ -1,0 +1,26 @@
+/* pages/bindphone/index.wxss */
+.inputmain{
+  display: flex;
+  height: 140rpx;
+  text-align: center;
+  /* margin: 20rpx; */
+  padding: 45rpx;
+}
+.inputmain .phonetext{
+  font-size: 45rpx;
+}
+.submit-btn {
+  width: 560rpx;
+  height: 96rpx;
+  margin: 0 auto;
+  font-size: 32rpx;
+  margin-top: 60rpx;
+  line-height: 96rpx;
+  border-radius: 48rpx;
+  text-align: center;
+  color: #ffffff;
+  background: #87CEEB;
+}
+.selected{
+  display: none;
+}

@@ -1,0 +1,38 @@
+<!--pages/chat/index.wxml-->
+<!-- text标签相当于行内标签，span -->
+<!-- view 标签相当于div标签 -->
+<text>pages/chat/index.wxml</text>
+<view>{{msg}}</view>
+<view>
+  <view wx:for="{{list}}" wx:for-item="item" 
+  wx:key="index"
+  wx:for-index="index">
+    索引：{{index}}
+    --
+    值:{{item.name}}
+  </view>
+  <view>
+    <input type="text" bindinput="handleinput" />
+    {{num}}
+  </view>
+</view>
+<text selectable>复制</text>
+<image mode="aspectFit" src="https://ae01.alicdn.com/kf/U22bf4aadbc42473eb737488c8a42210fi.jpg"/>
+<swiper autoplay circular interval="3000" indicator-dots>
+  <swiper-item> <image mode="widthFix" src="https://aecpm.alicdn.com/simba/img/TB1JNHwKFXXXXafXVXXSutbFXXX.jpg"/></swiper-item>
+  <swiper-item><image mode="widthFix" src="https://aecpm.alicdn.com/simba/img/TB183NQapLM8KJjSZFBSutJHVXa.jpg"/></swiper-item>
+  <swiper-item><image mode="widthFix" src="https://img.alicdn.com/imgextra/i2/6000000005246/O1CN01qHMYLf1ociQ22cNQL_!!6000000005246-0-octopus.jpg"/></swiper-item>
+</swiper>
+<navigator url="/pages/demo/index">跳转到个人中心</navigator>
+<rich-text nodes="{{html}}"></rich-text>
+<radio-group bindchange="handlechange">
+  <radio value="male">男</radio>
+  <radio value="female">女</radio>
+</radio-group>
+<view>您选择的性别是{{gender}}</view>
+
+
+<checkbox-group bindchange="handleitemchange">
+  <checkbox wx:for="{{list}}" value="{{item.value}}" wx:key="id">{{item.name}}</checkbox>
+</checkbox-group>
+<view>选中的水果是：{{fruitlist}}</view>

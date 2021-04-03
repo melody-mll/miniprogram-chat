@@ -1,0 +1,39 @@
+<!--pages/changedoctor/index.wxml-->
+<!-- <text>pages/changedoctor/index.wxml</text> -->
+<view class="warp">
+    <view class="heder fx-center">
+      <view class="doctor item fx-center {{!dateType?'selected':''}}" bindtap="changeType" data-wpychangetype-a="1">按医生预约</view>
+      <view class="date item fx-center {{dateType?'selected':''}}" bindtap="changeType" data-wpychangetype-a="2">按日期预约</view>
+    </view>
+   <view class="date-warp"  wx:if="{{dateType}}">
+      <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
+        <view class="item scroll-view-item_H {{dateIndex===index?'selected':''}}" wx:for="{{weekArr}}" wx:key="index" bindtap="getListByDate" data-wpygetlistbydate-a="{{index}}">
+          <view class="week">{{weekStr[item]}}</view>
+          <view class="day">{{dateArr[index]}}</view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="doctor-wrap"  wx:if="{{doctorList.length}}">
+      <view class="item fx-justify-start fx-align-center" wx:for="{{doctorList}}" wx:key="index" bindtap="selectDoctor" data-wpyselectdoctor-a="{{item}}">
+        <image class="left-img" src="https://biosan-saas.oss-cn-beijing.aliyuncs.com/weichat/mine/1111.png"/>
+        <view class="right ">
+          <view class="title fx-justify-start">医生姓名：{{item.doctorname||item.name||''}}
+            <!-- <block wx:if="{{dateType}}">
+              <view class="tag none-num" wx:if="{{item.isNo===2}}">停诊</view>
+              <view class="tag has-num" wx:elif="{{item.residueNum>0}}">{{dateType?'有号':'预约'}}</view>
+              <view class="tag none-num" wx:else>{{dateType?'无号':'停诊'}}</view>
+            </block> -->
+          </view>
+          <!-- <view class="des">{{item.title||''}}</view> -->
+        </view>
+
+      </view>
+    </view>
+  <view wx:if="{{!doctorList.length}}" class="bs-emptyPage-container">
+    <view class="imgs">
+      <image src="https://biosan-saas.oss-cn-beijing.aliyuncs.com/weichat/mine/no-doctor.png"/>
+    </view> 
+    <view class="description">暂无医生坐诊</view>
+  </view>
+   
+ </view>   

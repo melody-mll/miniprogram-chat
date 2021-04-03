@@ -1,0 +1,55 @@
+<view class="wrap">
+    <view class="item fx-justify-start fx-align-center">
+      <image class="left-img" src="https://biosan-saas.oss-cn-beijing.aliyuncs.com/weichat/mine/1111.png"/>
+      <view class="right ">
+        <view class="title fx-justify-start ">{{doctorname}}</view>
+      </view>
+    </view>
+    <view class="split"/>
+    <view class="schedule-wrap">
+      <view class="title">排班信息</view>
+      <block  wx:if="{{list.length}}">
+        <view class="item" wx:for="{{list}}" wx:key="index">
+          <view class="top fx-justify-between fx-align-center">
+            <view class="left">
+              <text space="ensp">{{item.scheduleDate}}  {{item.week}}</text>
+            </view>
+            <view class="right fx-justify-between fx-align-center">
+              <view class="price">¥{{item.registrationFee}}</view>
+              <button class="tag {{(!item.residueNum || item.residueNum <= 0 || item.isNo===2)?'disabled':''}}" bindtap="appointment" data-wpyappointment-a="{{item}}">预约</button>
+            </view>
+          </view>
+        </view>
+      </block>
+      <!-- <block  wx:else>
+        <view class="null">
+          
+  <view class="bs-emptyPage-container {{$EmptyPage$item.transparent?'transparent':''}}">
+    <view class="imgs">
+      <image src="{{$EmptyPage$item.url||$EmptyPage$url}}"/>
+    </view>
+    <view class="description">{{$EmptyPage$item.description}}</view>
+    <block  wx:if="{{$EmptyPage$item.desc}}">
+      <view class="desc">{{$EmptyPage$item.desc}}</view>
+    </block>
+    <block  wx:if="{{$EmptyPage$item.detail}}">
+      <view class="detail">{{$EmptyPage$item.detail}}</view>
+    </block>
+    <block wx:if="{{$EmptyPage$item.linkbtn}}">
+      <view class="link-btn" bindtap="$EmptyPage$btnLink">{{$EmptyPage$item.linkbtn}}</view>
+    </block>
+    <block wx:if="{{$EmptyPage$item.btn}}">
+      <view class="btn" bindtap="$EmptyPage$btnTap">{{$EmptyPage$item.btn}}</view>
+    </block>
+  </view>
+
+        </view>
+      </block> -->
+    </view>
+    <view wx:if="{{!list.length}}" class="bs-emptyPage-container">
+    <view class="imgs">
+      <image src="https://biosan-saas.oss-cn-beijing.aliyuncs.com/weichat/mine/schedule.png"/>
+    </view> 
+    <view class="description">暂无排班信息</view>
+  </view>
+</view>    

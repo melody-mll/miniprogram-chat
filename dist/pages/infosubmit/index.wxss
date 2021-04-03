@@ -1,0 +1,27 @@
+/* pages/infosubmit/index.wxss */
+.imgs image{
+  width: 400rpx;
+  height: 400rpx;
+  margin: 40rpx 200rpx;
+} 
+.fontsubmit{
+  font-size: 70rpx;
+  text-align: center;
+}
+.fontsubmitsee{
+  margin-top: 45rpx;
+  font-size: 40rpx;
+  text-align: center; 
+}
+.submit-btn {
+  width: 560rpx;
+  height: 96rpx;
+  margin: 0 auto;
+  font-size: 32rpx;
+  margin-top: 260rpx;
+  line-height: 96rpx;
+  border-radius: 48rpx;
+  text-align: center;
+  color: #ffffff;
+  background: #87CEEB;
+}

@@ -1,0 +1,12 @@
+<!-- pages/changedepart/index.wxml
+<text>pages/changedepart/index.wxml</text> -->
+<view class="select-project">
+    <navigator class="item" bindtap="nextStep"  wx:for="{{list}}" wx:key="index" data-wpynextstep-a="{{item}}" url="{{url}}">
+      <view class="title">{{item.depart}}</view>
+      <!-- <view class="des">{{item.subProjectName ||''}}</view> -->
+      <!-- <image
+        class="img"
+        src="../../images/changeDiagnosis/1.png"
+      ></image>-->
+    </navigator>
+</view>    

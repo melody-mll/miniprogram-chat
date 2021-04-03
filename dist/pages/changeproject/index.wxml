@@ -1,0 +1,18 @@
+<!-- pages/changeproject/index.wxml
+<text>pages/changeproject/index.wxml</text> -->
+<view class="select-project">
+    <navigator class="item" bindtap="nextStep"  wx:for="{{list}}" wx:key="index" data-wpynextstep-a="{{item}}" url="{{url}}">
+      <view class="left-img">
+        <image src="../../images/医院项目绿色通道申请.png"></image>
+        <!-- <view class=" _icon iconfont icon-icon_hospital1" style="color:#31D4DA;font-size:40px"/> -->
+      </view>
+      <view class="title">{{item.projectname}}
+      </view>
+      <!-- <view class="des">{{item.subProjectName ||''}}</view> -->
+      <!-- <image
+        class="img"
+        src="../../images/changeDiagnosis/1.png"
+      ></image>-->
+    </navigator>
+</view> 
+

@@ -1,0 +1,8 @@
+/* pages/chat/index.wxss */
+image{
+  width: 100%;
+}
+swiper{
+  width: 100%;
+  height:calc(100vw*280/520);
+}

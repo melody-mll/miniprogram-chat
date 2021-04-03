@@ -1,0 +1,37 @@
+<wxs module="util" src="../../utils/filter.wxs"></wxs>
+
+<view class="content1" bindtap='onLivePlayer' wx:if="{{school.picture}}" >
+  <view class='img-container' >
+    <!-- <image  src="{{school.picture}}" class="head-img"></image> -->
+    <image src="{{school.picture}}" class="head-img"></image> 
+   
+  </view>
+  <view class="content-part">
+    <view class='name-container'>
+      <text class='name-text'>{{school.name}}</text>
+      <!-- <view class="camera-status {{school.video==1?'online-bg':'offline-bg'}}"> -->
+        <!-- <image class="camera-img" src="{{school.video==1?'/images/online.png':'/images/offline.png'}}"></image>
+        <text class='camera-text'>{{school.video==1?'在线':'离线'}}</text> -->
+      <!-- </view> -->
+    </view>
+    <view class='addr-container'>
+      <view class='addr-left'>
+        <image class='addr-img' src='../../images/location.png'></image>
+        <text class='addr-text'>{{school.address}}</text>
+      </view>
+      <view class='addr-right'>
+        <text class='addr-distance'>{{ util.format(school.distance/1000) }}km</text>
+      </view>
+    </view>
+    <view class='star-container'>
+      <ui-mini-star value='{{school.star}}' _pid="{{_pid}}"></ui-mini-star>
+      <text class='level-text'>{{ util.levelStatus(school.level) }}</text>
+      <image class='level-img' src='/images/a.png'></image>
+    </view>
+    <view class='type-container'>
+      <!-- <text class='type-text'>{{school.type}}</text> -->
+      <!-- <view class='line'></view>
+      <text class='type-text'>正在营业</text> -->
+    </view>
+  </view>
+</view>

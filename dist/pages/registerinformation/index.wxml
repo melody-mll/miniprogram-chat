@@ -1,0 +1,65 @@
+<!--pages/registerinformation/index.wxml-->
+<view class="wrap">
+  <view class="page-header inputs">
+    <view class="card fx-column fx-justify-between" >
+
+      <view class="item fx-center fx-justify-start">
+        <image src="../../images/icondep.png"></image>
+        <view class="des">预约科室： {{departname}}</view>
+      </view>
+      <view class="item fx-center fx-justify-start">
+        <image src="../../images/iconproj.png"></image>
+        <view class="des">预约项目： {{projectname}}</view>
+      </view>
+      <view class="item fx-center fx-justify-start">
+        <image src="../../images/icondoc.png"></image>
+        <view class="des">预约医生： {{doctorname}}</view>
+      </view>
+      <view class="item fx-center fx-justify-start">
+        <image src="../../images/icontime.png"></image>
+        <view class="des">预约时间： {{scheduleDate}} {{week}}</view>
+      </view>
+      <view class="item fx-center fx-justify-start">
+        <image src="../../images/iconfee.png"></image>
+        <view class="des price">预约费用： ¥{{registrationFee}}</view>
+      </view>
+    </view>
+  </view>
+      <view>
+      <form bindsubmit="" report-submit="{{true}}">
+        <view class="inputs">
+          <!-- 姓名 -->
+          <view class="input-group bind-key" data-key="name">
+            <text class="input-label">姓名：</text>
+            <input type="text" disabled="{{confirmform}}" placeholder-class="placeholder-class" placeholder="请填写(必填)" value="{{patientname}}" bindblur="blured" class="paddingLeft" data-wpyblured-a="name"/>
+          </view>
+          <!-- 性别 -->
+          <view class="input-group bind-key" data-key="sex">
+            <text class="input-label">性别：</text>
+            <!-- <input type="text" placeholder-class="placeholder-class" placeholder="请填写" value="{{orderFormData.name}}" bindblur="blured" class="paddingLeft" data-wpyblured-a="name"/> -->
+            <picker bindchange="changepicker" disabled="{{confirmform}}"  range="{{arraypicker}}" value="{{index}}" placeholder="请选择" class="paddingLeft">
+              <view class="paddingLeft">{{arraypicker[index]}}</view>
+            </picker>
+          </view>
+          <!-- 手机号 -->
+          <view class="input-group bind-key" data-key="phone">
+            <text class="input-label">手机号码：</text>
+            <input type="text" disabled="{{confirmform}}"  placeholder-class="placeholder-class" placeholder="请填写(必填)" value="{{patientphone}}" bindblur="blured" class="paddingLeft" data-wpyblured-a="phone"/>
+          </view>
+          <!-- 证件号 -->
+          <view class="input-group bind-key" data-key="id">
+            <text class="input-label">身份证号码：</text>
+            <input type="text" disabled="{{confirmform}}"  placeholder-class="placeholder-class" placeholder="请填写(必填)" value="{{patientid}}" bindblur="blured" class="paddingLeft" data-wpyblured-a="id"/>
+          </view>
+        </view>
+    
+    <button class="submit-btn active {{selectbtntop?'selectedbtn':''}}" bindtap="tapNextBtn">提交</button>
+    <view class="bottombutton">
+      <button class="submit-btnt active {{selectbtntop?'':'selectedbtn'}}" bindtap="tapNextBtnconfirm">确认</button>
+      <button class="submit-btntb active {{selectbtntop?'':'selectedbtn'}}" bindtap="tapNextBtnchange">更改</button>
+    </view>
+    </form>
+  </view>
+
+
+</view>  

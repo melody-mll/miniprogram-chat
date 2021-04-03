@@ -1,0 +1,43 @@
+<!--pages/diseasedetails/index.wxml-->
+<!-- <text>pages/diseasedetails/index.wxml</text> -->
+<!--pages/registerdetail/index.wxml-->
+<view class="main">
+  <view class="maintitle">病人信息</view>
+  <view>
+      <form bindsubmit="" report-submit="{{true}}">
+        <view class="inputs">
+          <!-- 姓名 -->
+          <view class="input-group bind-key" data-key="name">
+            <text class="input-label">姓名：</text>
+            <input type="text" disabled="{{confirmform}}" placeholder-class="placeholder-class" placeholder="请填写(必填)" value="{{patientname}}" bindblur="blured" class="paddingLeft" data-wpyblured-a="name"/>
+          </view>
+          <!-- 性别 -->
+          <view class="input-group bind-key" data-key="sex">
+            <text class="input-label">性别：</text>
+            <!-- <input type="text" placeholder-class="placeholder-class" placeholder="请填写" value="{{orderFormData.name}}" bindblur="blured" class="paddingLeft" data-wpyblured-a="name"/> -->
+            <picker bindchange="changepicker" disabled="{{confirmform}}"  range="{{arraypicker}}" value="{{index}}" placeholder="请选择" class="paddingLeft">
+              <view class="paddingLeft">{{arraypicker[index]}}</view>
+            </picker>
+          </view>
+          <!-- 手机号 -->
+          <view class="input-group bind-key" data-key="phone">
+            <text class="input-label">手机号码：</text>
+            <input type="text" disabled="{{confirmform}}"  placeholder-class="placeholder-class" placeholder="请填写(必填)" value="{{patientphone}}" bindblur="blured" class="paddingLeft" data-wpyblured-a="phone"/>
+          </view>
+          <!-- 证件号 -->
+          <view class="input-group bind-key" data-key="id">
+            <text class="input-label">身份证号码：</text>
+            <input type="text" disabled="{{confirmform}}"  placeholder-class="placeholder-class" placeholder="请填写(必填)" value="{{patientid}}" bindblur="blured" class="paddingLeft" data-wpyblured-a="id"/>
+          </view>
+          <!-- 就诊日期 -->
+          <view class="input-group bind-key" data-key="date">
+            <text class="input-label">就诊日期：</text>
+            <input type="text" disabled="{{confirmform}}"  placeholder-class="placeholder-class" placeholder="格式参考：xxxx-xx-xx" value="{{clinicdate}}" bindblur="blured" class="paddingLeft" data-wpyblured-a="date"/>
+          </view>
+        </view>
+    
+    <button class="submit-btn active {{selectbtntop?'selectedbtn':''}}" bindtap="tapNextBtn">确认绑定</button>
+    </form>
+  </view>
+</view>
+

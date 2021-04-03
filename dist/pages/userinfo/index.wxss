@@ -1,0 +1,58 @@
+/* pages/user/index.wxss */
+.avatar-warp{
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  margin-top: 50rpx;
+  height: 95rpx;
+  width: 300rpx;
+  position:relative
+  }
+  .avatar ._avatar {
+    position: absolute;
+    height: 150rpx;
+    width: 150rpx;
+    border-radius: 20%;
+    border: 12rpx solid #fff;
+}
+.nickdetail{
+  margin-top: 55rpx;
+  border-bottom: 5rpx solid #87CEEB;
+  width: 385rpx;
+}
+.nickname{
+  font-size: 45rpx;
+}
+.getphone{
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3rpx solid #5d5d5d;
+}
+.topmargin{
+  margin-top: 100rpx;
+}
+.getphone .leftinfo{
+  display: flex;
+}
+.getphone .leftinfo image{
+  width: 55rpx;
+  height: 55rpx;
+}
+.getphone .leftinfo .gettips{
+  margin-left: 15rpx;
+  font-size: 38rpx;
+  color: #5d5d5d;
+}
+.rightinfo image{
+  width: 55rpx;
+  height: 55rpx;
+}
+.selected{
+  display: none;
+}

@@ -1,0 +1,12 @@
+<!--pages/bindphone/index.wxml-->
+<!-- <text>pages/bindphone/index.wxml</text> -->
+<view class="main">
+  <view class="topinfo">
+      <view class="inputmain">
+        <view class="phonetext">绑定手机号</view>
+        <input type="text" disabled="{{confirmform}}"  class="{{phonedata?'selected':''}}"placeholder-class="placeholder-class" placeholder="请填写手机号" value="{{patientphone}}" bindblur="blured" class="paddingLeft" data-wpyblured-a="phone"/>
+        <view class="{{phonedata?'':'selected'}}">{{userphone}}</view>
+      </view>
+      <button bindtap="getPhoneNumber" class="submit-btn">确定</button>
+  </view>
+</view>

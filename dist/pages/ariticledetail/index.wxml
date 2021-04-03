@@ -1,0 +1,12 @@
+<!--pages/ariticledetail/index.wxml-->
+<view class="main">
+  <view class="title">
+    {{articledetail.articleText}}
+  </view>
+  <navigator>
+    <!-- <image  src="{{item}}" /> -->
+   
+    <view wx:key="index" wx:for="{{articletext}}">{{item}}</view>
+    <image  wx:key="index" wx:for="{{articleimage}}" src="{{item}}" mode="widthFix"/>
+  </navigator>
+</view>

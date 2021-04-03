@@ -1,0 +1,37 @@
+<!--pages/myconsultingrecord/index.wxml-->
+<!-- <text>pages/myconsultingrecord/index.wxml</text> -->
+
+<view class="page-wrap">
+    <scroll-view scroll-y scroll-with-animation="scroll-with-animation" bindscrolltolower="loadmoreEvent" class="message-container">
+      <view class="date-group-wrap"  wx:for="{{messageList}}" wx:key="index">
+        <view class="date">{{item.date}}</view>
+        <view class="chat-content">
+          <block wx:for="{{item.miniMsgs}}" wx:key="index">
+            <view class="message-wrap {{item.isSelf ? 'self' : ''}}">
+              <image src="{{item.isSelf === 1 ? item.headImg : 'https://biosan-saas.oss-cn-beijing.aliyuncs.com/weichat/chat/chat-avatar.png'}}" class="avatar"/>
+              <view class="message" wx:if="{{item.contentType=== 1}}">
+                {{item.content}}
+              </view>
+              <!-- <image wx:elif="{{item.contentType=== 2}}" mode="widthFix" bindtap="previewImgageEevent" src="{{item.content}}" class="message-img" data-wpypreviewimgageeevent-a="{{item.content}}"/> -->
+            </view>
+            <view class="success-tips-wrap" wx:if="{{item.isFirst}}">
+              <view class="success-tips">
+                <view>留言成功！</view>
+                <view>
+                  医生查看之后将尽快回复您！
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="page-fix-bottom ">
+      <textarea value="{{messageVal}}" fixed="fixed" maxlength="500" cursor-spacing="30" disable-default-padding="{{false}}" bindinput="inputEvent" bindconfirm="messageSubmitEvent"
+      />
+      <view class="iconfont icon-chat-upload" bindtap="chooseImgEvent"/>
+      <!-- <view class="submit-btn {{messageVal !== '' && isConnectSocket ? 'send' : ''}}" bindtap="messageSubmitEvent">发送</view> -->
+      <view class="submit-btn {{messageVal !== ''? 'send' : ''}}" bindtap="messageSubmitEvent">发送</view>
+
+    </view>
+  </view>

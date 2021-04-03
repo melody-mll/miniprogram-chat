@@ -1,0 +1,40 @@
+<!--pages/registerdetail/index.wxml-->
+<view class="main">
+  <view class="maintitle">预约详细信息</view>
+  <view class="item top">
+    <view class="title">姓名</view>
+    <view class="text">{{patientname}}</view>
+  </view>
+  <view class="item">
+    <view class="title">性别</view>
+    <view class="text">{{patientsex}}</view>
+  </view>
+  <view class="item">
+    <view class="title">电话</view>
+    <view class="text">{{patientphone}}</view>
+  </view>
+  <view class="item">
+    <view class="title">身份证号</view>
+    <view class="text">{{patientid}}</view>
+  </view>
+  <view class="item">
+    <view class="title">预约医生</view>
+    <view class="text">{{doctorname}}</view>
+  </view>
+  <view class="item">
+    <view class="title">预约科室</view>
+    <view class="text">{{departname}}</view>
+  </view>
+  <view class="item">
+    <view class="title">预约项目</view>
+    <view class="text">{{projectname}}</view>
+  </view>
+  <view class="item">
+    <view class="title">挂号费用</view>
+    <view class="text">{{registerFee}}元</view>
+  </view>
+  <view class="item">
+    <view class="title">就诊日期</view>
+    <view class="text date">{{registerdate}}</view>
+  </view>
+</view>

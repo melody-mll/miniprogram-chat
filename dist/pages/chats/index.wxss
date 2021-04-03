@@ -1,0 +1,76 @@
+/* pages/chats/index.wxss */
+.bindphone{
+  text-align: center;
+  margin-top: 70rpx;
+  color: red;
+}
+.selected{
+  display: none;
+}
+
+.page-wrap .page-container {
+  padding: 32rpx 32rpx 0;
+}
+.page-wrap .page-container .card-list-wrap .card-item {
+  margin-top: 32rpx;
+}
+.page-wrap .page-container .card-list-wrap .card-item:first-child {
+  margin-top: 0;
+}
+.page-wrap .page-container .page-button {
+  width: 560rpx;
+  height: 96rpx;
+  /* background: #31d4da; */
+  background:#87CEEB;
+  text-align: center;
+  line-height: 95rpx;
+  color: #fff;
+  border-radius: 48rpx;
+  margin: 120rpx auto;
+}
+.page-wrap .empty-wrap .page-button {
+  width: 560rpx;
+  height: 96rpx;
+  /* background: #31d4da; */
+  background:#87CEEB;
+  text-align: center;
+  line-height: 95rpx;
+  color: #fff;
+  border-radius: 48rpx;
+  margin: 120rpx auto;
+}
+.component-card-wrap .card-body {
+  box-sizing: border-box;
+  padding: 32rpx;
+  background: linear-gradient(121deg, #82c0f3 0%, #188ff2 100%);
+  border-radius: 16rpx;
+}
+.component-card-wrap .card-body .top-row {
+  display: flex;
+  align-items: center;
+}
+.component-card-wrap .card-body .top-row .avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.component-card-wrap .card-body .top-row .middle-info {
+  flex: 1;
+  color: #fff;
+  padding: 0 32rpx;
+}
+.component-card-wrap .card-body .detail-row {
+  display: flex;
+  margin-top: 36rpx;
+  padding: 0 12rpx;
+  justify-content: space-between;
+}
+.component-card-wrap .card-body .detail-row .item {
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 1;
+  text-align: center;
+}
+.component-card-wrap .card-body .detail-row .item .content{
+  margin-top: 15rpx;
+}

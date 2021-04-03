@@ -1,0 +1,25 @@
+<!--pages/registershowing/index.wxml-->
+<!-- <text>pages/registershowing/index.wxml</text> -->
+<view class="bindphone '{{phonedata?'selected':''}}'">
+  电话信息没有绑定，请立即绑定！
+</view>
+<view class="page-wrap '{{phonedata?'':'selected'}}' '{{listlength?'':'selected'}}'">
+    <block  wx:if="{{list&&list.length}}">
+      <view class="card" wx:for="{{list}}" wx:key="index" bindtap="tap" data-wpytap-a="{{item}}" data-wpytap-b="{{index}}">
+        <view class="header fx-between">
+          <view class="name">{{item.patientname}} <text class="phone">({{item.patientphone}})</text></view>
+          <view class="iconfont icon-icon_Arrow"/>
+        </view>
+        <view class="relation">
+          预约科室：{{item.departname}}
+        </view>
+        <view class="time">
+          预约时间：{{item.registerdate || ''}}
+        </view>
+      </view>
+
+    </block>
+</view>
+<view class="bindphone '{{phonedata?'':'selected'}}' '{{listlength?'selected':''}}'">
+  暂无预约信息！
+</view>

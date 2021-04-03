@@ -1,0 +1,4 @@
+/* pages/ariticledetail/index.wxss */
+.main .title{
+  font-size: 60rpx;
+}

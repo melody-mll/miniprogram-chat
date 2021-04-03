@@ -1,0 +1,109 @@
+/* pages/changedoctor/index.wxss */
+.warp .heder {
+  width: 750rpx;
+  height: 136rpx;
+  background: #ffffff;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+.warp .heder .item {
+  width: 297rpx;
+  height: 72rpx;
+  border: 2rpx solid #87CEEB;
+  font-size: 28rpx;
+  color: #87CEEB;
+  box-sizing: border-box;
+}
+.warp .heder .item.selected {
+  color: #ffffff;
+  background: #87CEEB;
+}
+.warp .heder .doctor {
+  border-radius: 8rpx 0 0 8rpx;
+  border-right: none;
+}
+.warp .heder .date {
+  border-radius: 0 8rpx 8rpx 0;
+  border-left: none;
+}
+.fx-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.warp .doctor-wrap {
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  background: white;
+}
+.warp .doctor-wrap > .item {
+  display:flex;
+  height: 150rpx;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+.warp .doctor-wrap > .item:last-child {
+  display:flex;
+  border: none;
+}
+.warp .doctor-wrap > .item .left-img {
+  display: inline-block;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+}
+.warp .doctor-wrap > .item .right {
+  display: inline-block;
+  margin-left: 80rpx;
+}
+.warp .doctor-wrap > .item .right .title {
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 16rpx;
+  line-height: 44rpx;
+  margin-top: 60rpx;
+}
+.warp .date-warp {
+  height: 128rpx;
+  background: white;
+}
+.warp .date-warp .scroll-view_H {
+  white-space: nowrap;
+}
+.warp .date-warp .item {
+  width: 128rpx;
+  height: 128rpx;
+  border: 1rpx solid #f2f2f2;
+  border-top: none;
+  font-size: 28rpx;
+  color: #5d5d5d;
+  line-height: 40rpx;
+  text-align: center;
+  display: inline-block;
+  padding: 24rpx 0;
+  box-sizing: border-box;
+}
+.warp .date-warp .item.selected {
+  background: #31d4da;
+  color: white;
+}
+.bs-emptyPage-container {
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bs-emptyPage-container .imgs {
+  width: 240rpx;
+  height: 240rpx;
+  margin-top: 160rpx;
+}
+.bs-emptyPage-container .imgs image {
+  width: 240rpx;
+  height: 240rpx;
+}
+.bs-emptyPage-container .description {
+  color: #5d5d5d;
+  font-size: 28rpx;
+  margin-top: 48rpx;
+}
